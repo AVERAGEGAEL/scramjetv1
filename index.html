@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scramjet Test</title>
+</head>
+<body>
+  <h1>Scramjet Test Frontend</h1>
+
+  <input id="url" placeholder="Enter URL to proxy" style="width: 300px;" />
+  <button onclick="go()">Go</button>
+
+  <script src="scramjet.config.js"></script>
+  <script src="scramjet.load.js"></script>
+  <script>
+    window.addEventListener("load", () => {
+      scramjet.loadWorker();
+    });
+
+    function go() {
+      const urlInput = document.getElementById("url").value.trim();
+      if (!urlInput) return;
+      window.location.href = "/bare/?url=" + encodeURIComponent(urlInput);
+    }
+  </script>
+</body>
+</html>
